@@ -16,7 +16,7 @@ namespace Tanks
         public void startListening() {
             ThreadStart threadStart = new ThreadStart(update);
             Thread t = new Thread(threadStart);
-           // t.Start();
+            t.Start();
             
         }
 

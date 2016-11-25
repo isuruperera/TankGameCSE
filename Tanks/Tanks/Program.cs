@@ -13,17 +13,20 @@ namespace Tanks
         {
             bool isGameRunning = true;
             TankListener tl = new TankListener();
-            tl.startListening();
-           
+            tl.startListening();           
             TankClient tc = new TankClient();
             //Join the game
             tc.executeCommand("JOIN#");
             Console.WriteLine("Connected to server!");
             while (isGameRunning) {
+
+                //Fix the order of updating the server and he listening to the data stream. Other order won't work
                 //listen to the server and update the game internal variables
-                tl.update();
+                //tl.update();
+
                 //Capture keyboard input and control tanks accordingly
                 ConsoleKeyInfo key = Console.ReadKey();
+                
                 if (key.Key == ConsoleKey.RightArrow) {
                     tc.executeCommand("RIGHT#");
                     Console.WriteLine("Got Right Arrow!");
